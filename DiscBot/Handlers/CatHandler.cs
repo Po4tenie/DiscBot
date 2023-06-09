@@ -20,7 +20,7 @@ namespace DiscBot.Handlers
             string cat = "";
 
 
-            string jsonUrl = $"https://api.thecatapi.com/v1/images/search?api_key=eeeb7e8d-f2df-4e06-b2e1-0dc050ce2b5b";
+            string jsonUrl = $"";
             WebClient webClient = new WebClient();
 
             jsonUrl = webClient.DownloadString(jsonUrl);
