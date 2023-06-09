@@ -20,7 +20,7 @@ namespace DiscBot.Handlers
             string cat = "";
 
 
-            string jsonUrl = $"";
+            string jsonUrl = $"  ";
             WebClient webClient = new WebClient();
 
             jsonUrl = webClient.DownloadString(jsonUrl);
