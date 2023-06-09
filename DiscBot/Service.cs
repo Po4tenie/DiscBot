@@ -34,22 +34,25 @@ namespace DiscBot
             _lavaNode = _services.GetRequiredService<LavaNode>();
             _audioService = _services.GetRequiredService<AudioService>();
             SubscribeDiscordEvents();
-         
+            var config = new ConfigurationBuilder()
+                 .SetBasePath(AppContext.BaseDirectory)
+                 .AddYamlFile("config.yml")
+                 .Build();
+            _client.Log += async (LogMessage msg) => Console.WriteLine(msg.Message);
         }
 
         public async Task InitializeAsync()
         {
-            var config = new ConfigurationBuilder()
-              .SetBasePath(AppContext.BaseDirectory)
-              .AddYamlFile("config.yml")
-              .Build();
-            _client.Log += async (LogMessage msg) => Console.WriteLine(msg.Message);
 
+            var config = new ConfigurationBuilder()
+                 .SetBasePath(AppContext.BaseDirectory)
+                 .AddYamlFile("config.yml")
+                 .Build();
             await _client.LoginAsync(TokenType.Bot, config["tokens:discord"]);
             await _client.StartAsync();
             await _services.GetRequiredService<CommandHandler>().initializateAsync();
             await _prefixHandler.InitializeAsync();
-           
+            _commands.RegisterCommandsToGuildAsync(UInt64.Parse(config["testguild"]));
             await Task.Delay(-1);
 
 
@@ -58,7 +61,7 @@ namespace DiscBot
         private void SubscribeDiscordEvents()
         {
             _client.Ready += ReadyAsync;
-            _commands.RegisterCommandsGloballyAsync(true);
+            
         }
 
 

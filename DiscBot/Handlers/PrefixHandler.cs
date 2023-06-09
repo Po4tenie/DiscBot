@@ -23,17 +23,13 @@ namespace DiscBot.Handlers
         _client = client;
         _command = command;
         _services = services;
-        HookEvents();
+        
         }
 
         public async Task InitializeAsync() {
             await _command.AddModulesAsync(
                 assembly: Assembly.GetEntryAssembly(),
                 services: _services);
-        }
-        public void HookEvents()
-        {
-            //_command.Log += LogAsync;
             _client.MessageReceived += HandlerCommandAsync;
         }
 
@@ -55,7 +51,7 @@ namespace DiscBot.Handlers
                 await _command.ExecuteAsync(
                     context: context,
                     argPos: argPos,
-                    services: null
+                    services: _services
                     );
         
         }

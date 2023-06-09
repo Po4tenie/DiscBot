@@ -8,18 +8,6 @@ namespace DiscBot.Modules
 {
     public class PrefixModule : ModuleBase<SocketCommandContext>
     {
-        //private readonly MusicHandler _musicHandler;
-        //public PrefixModule(MusicHandler musicHandler)
-        //{
-        //    _musicHandler = musicHandler;
-        //}
-        //[Command("ы")]
-        //public async Task JoinAsync111()
-        //{
-
-        //    var user = Context.User as SocketGuildUser;
-        //    await _musicHandler.JoinAsync(user.VoiceChannel, Context.Channel as ITextChannel);
-        //}
         [Command("кто")]
         public async Task kto()
         {
@@ -50,7 +38,7 @@ namespace DiscBot.Modules
 
 
             var voiceState = Context.User as IGuildUser;
-            //await _lavaNode.JoinAsync(voiceState.VoiceChannel, Context.Channel as ITextChannel);
+            
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DiscBot.Handlers;
 using Discord;
 using Discord.Commands;
+using Discord.Interactions;
 using Discord.WebSocket;
 using Victoria;
 using Victoria.Node;
@@ -333,7 +334,7 @@ namespace DiscBot.Modules
             await ReplyAsync(embed: embed.Build());
         }
 
-        [Command("Genius", RunMode = RunMode.Async)]
+        //[Command("Genius", RunMode = RunMode.Async)]
         public async Task ShowGeniusLyrics()
         {
             if (!_lavaNode.TryGetPlayer(Context.Guild, out var player))
@@ -373,7 +374,7 @@ namespace DiscBot.Modules
             await ReplyAsync($"```{stringBuilder}```");
         }
 
-        [Command("OVH", RunMode = RunMode.Async)]
+       // [Command("OVH", RunMode = RunMode.Async)]
         public async Task ShowOvhLyrics()
         {
             if (!_lavaNode.TryGetPlayer(Context.Guild, out var player))
